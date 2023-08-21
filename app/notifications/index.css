@@ -1,0 +1,173 @@
+@font-face {
+  font-family: Whitney;
+  font-style: light;
+  font-weight: 300;
+  src: url("../fonts/whitney-light.woff") format('woff');
+}
+@font-face {
+  font-family: Whitney;
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/whitney-book.woff") format('woff');
+}
+@font-face {
+  font-family: Whitney;
+  font-style: medium;
+  font-weight: 600;
+  src: url("../fonts/whitney-medium.woff") format('woff');
+}
+@font-face {
+  font-family: Whitney;
+  font-style: bold;
+  font-weight: 700;
+  src: url("../fonts/whitney-bold.woff") format('woff');
+}
+@-webkit-keyframes flipIn {
+  0% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    transition-timing-function: ease-in;
+    opacity: 0;
+  }
+  40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transition-timing-function: ease-in;
+  }
+  60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+  80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+  100% {
+    transform: perspective(400px);
+  }
+}
+@-webkit-keyframes flipOut {
+  0% {
+    transform: perspective(400px);
+  }
+  30% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    opacity: 1;
+  }
+  100% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    opacity: 0;
+  }
+}
+* {
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  cursor: default;
+}
+body {
+  margin: 0;
+  overflow: hidden;
+}
+#notifications {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 400;
+  height: 530;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.notification {
+  height: 96px;
+  width: 390px;
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  line-height: 18px;
+  font-size: 12px;
+  background-color: #fff;
+  background-clip: padding-box;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  transition: 0.2s background-color;
+  -webkit-animation-fill-mode: both;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  position: relative;
+}
+.notification.in {
+  backface-visibility: visible !important;
+  -webkit-animation-name: flipIn;
+  -webkit-animation-duration: 700ms;
+}
+.notification.out {
+  backface-visibility: visible !important;
+  -webkit-animation-name: flipOut;
+  -webkit-animation-duration: 333ms;
+}
+.notification:hover .notification-dismiss {
+  opacity: 0.5;
+}
+.notification .notification-dismiss {
+  position: absolute;
+  opacity: 0;
+  width: 10px;
+  height: 10px;
+  right: 6px;
+  top: 6px;
+  background: url("../images/close.svg") no-repeat;
+  background-size: 10px;
+  transition: 0.2s opacity;
+  z-index: 1;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+}
+.notification .notification-dismiss:hover {
+  opacity: 1;
+}
+.notification .notification-logo {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  width: 22px;
+  height: 24px;
+  background: url("../images/discord.svg") center center no-repeat;
+  background-size: 22px 24px;
+}
+.notification .notification-contents {
+  height: 96px;
+  width: 390px;
+  display: flex;
+  flex-direction: row;
+}
+.notification .notification-contents .notification-icon {
+  height: 96px;
+  width: 96px;
+  background: #1e2124;
+  background-size: 96px 96px;
+}
+.notification .notification-contents .notification-body {
+  flex: 1;
+  padding: 10px;
+}
+.notification .notification-contents .notification-body header {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.8em;
+  font-weight: 600;
+  color: #738bd7;
+  letter-spacing: 0.02em;
+}
+.notification .notification-contents .notification-body p {
+  margin: 0;
+  color: #737f8d;
+  font-size: 12px;
+  line-height: 1.25em;
+  overflow: hidden;
+  width: 90%;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.notification .notification-contents .notification-body p + p {
+  margin-top: 5px;
+}
