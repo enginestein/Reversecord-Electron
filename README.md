@@ -1,4 +1,4 @@
-# Reversecord-App
+# Reversecord-Electron
 
 This repository contains code of discord application reverse engineered compatible with electron.js
 
