@@ -7,7 +7,7 @@
   "private": true,
   "dependencies": {
     "erlpack": "git+https://github.com/hammerandchisel/erlpack.git",
-    "follow-redirects": "0.0.6",
+    "follow-redirects": "1.15.4",
     "react": "^0.14.7",
     "react-dom": "^0.14.7"
   }
